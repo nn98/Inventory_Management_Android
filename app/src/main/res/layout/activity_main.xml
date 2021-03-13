@@ -10,7 +10,9 @@
         android:id="@+id/tab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabIndicatorColor="#222"
+        app:tabIndicatorColor="#dff"
+        app:tabIndicatorHeight="3dp"
+        style="@style/tabBg"
         app:tabSelectedTextColor="#fff">
 
         <com.google.android.material.tabs.TabItem

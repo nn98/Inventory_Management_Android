@@ -17,4 +17,11 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+<!--    <style name="Base.Widget.Design.TabLayout" parent="android:Widget">-->
+    <style name="tabBg" parent="android:Widget">
+        <item name="tabBackground">@drawable/tab_bg</item>
+        <item name="tabIndicatorColor">#ff00ff</item>
+        <item name="tabIndicatorHeight">2dp</item>
+    </style>
+
 </resources>

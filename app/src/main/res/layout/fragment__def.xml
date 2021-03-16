@@ -42,6 +42,8 @@
             app:layout_constraintRight_toLeftOf="@id/noodleN"/>
 
         <EditText
+            android:gravity="center"
+            android:inputType="number"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:id="@+id/noodleN"
@@ -104,29 +106,335 @@
         app:layout_constraintTop_toBottomOf="@id/stock1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        app:layout_constraintHorizontal_bias="1"
+        android:background="#667"
         android:id="@+id/stock2">
+
+        <TextView
+            app:layout_constraintHorizontal_bias="0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="면추"
+            android:id="@+id/noodle1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/noodleC1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/noodleC1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/noodle1"
+            app:layout_constraintRight_toLeftOf="@id/noodleN1"/>
+
+        <EditText
+            android:gravity="center"
+            android:inputType="number"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/noodleN1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/noodleC1"
+            app:layout_constraintRight_toLeftOf="@id/btns11"/>
+
+        <LinearLayout
+            app:layout_constraintHorizontal_bias="0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/noodleN1"
+            app:layout_constraintRight_toRightOf="parent"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/btns11">
+
+            <Button
+                app:layout_constraintVertical_chainStyle="packed"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:id="@+id/noodleP1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/noodleN1"
+                app:layout_constraintRight_toLeftOf="@+id/noodleM1"/>
+
+            <Button
+                app:layout_constraintVertical_chainStyle="packed"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:id="@+id/noodleM1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/noodleP1"
+                app:layout_constraintRight_toLeftOf="@+id/noodleCon1"/>
+
+            <Button
+                app:layout_constraintVertical_chainStyle="packed"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="변경"
+                android:id="@+id/noodleCon1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/noodleM1"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintHorizontal_chainStyle="packed"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintTop_toBottomOf="@id/stock2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#667"
+        android:id="@+id/stock3">
+
+        <TextView
+            app:layout_constraintHorizontal_bias="0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="밥"
+            android:id="@+id/noodle2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/noodleC2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/noodleC2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/noodle2"
+            app:layout_constraintRight_toLeftOf="@id/noodleN2"/>
+
+        <EditText
+            android:gravity="center"
+            android:inputType="number"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/noodleN2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/noodleC2"
+            app:layout_constraintRight_toLeftOf="@id/btns12"/>
+
+        <LinearLayout
+            app:layout_constraintHorizontal_bias="0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/noodleN2"
+            app:layout_constraintRight_toRightOf="parent"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/btns12">
+
+            <Button
+                app:layout_constraintVertical_chainStyle="packed"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:id="@+id/noodleP2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/noodleN2"
+                app:layout_constraintRight_toLeftOf="@+id/noodleM2"/>
+
+            <Button
+                app:layout_constraintVertical_chainStyle="packed"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:id="@+id/noodleM2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/noodleP2"
+                app:layout_constraintRight_toLeftOf="@+id/noodleCon2"/>
+
+            <Button
+                app:layout_constraintVertical_chainStyle="packed"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="변경"
+                android:id="@+id/noodleCon2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/noodleM2"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintHorizontal_chainStyle="packed"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintTop_toBottomOf="@id/stock3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#667"
+        android:id="@+id/stock4">
+
+        <TextView
+            app:layout_constraintHorizontal_bias="0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="밥추"
+            android:id="@+id/noodle3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/noodleC3"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/noodleC3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/noodle3"
+            app:layout_constraintRight_toLeftOf="@id/noodleN3"/>
+
+        <EditText
+            android:gravity="center"
+            android:inputType="number"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/noodleN3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/noodleC3"
+            app:layout_constraintRight_toLeftOf="@id/btns13"/>
+
+        <LinearLayout
+            app:layout_constraintHorizontal_bias="0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@id/noodleN3"
+            app:layout_constraintRight_toRightOf="parent"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/btns13">
+
+            <Button
+                app:layout_constraintVertical_chainStyle="packed"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:id="@+id/noodleP3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/noodleN3"
+                app:layout_constraintRight_toLeftOf="@+id/noodleM3"/>
+
+            <Button
+                app:layout_constraintVertical_chainStyle="packed"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:id="@+id/noodleM3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/noodleP3"
+                app:layout_constraintRight_toLeftOf="@+id/noodleCon3"/>
+
+            <Button
+                app:layout_constraintVertical_chainStyle="packed"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="변경"
+                android:id="@+id/noodleCon3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/noodleM3"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintHorizontal_chainStyle="packed"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        app:layout_constraintTop_toBottomOf="@id/stock1"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        app:layout_constraintHorizontal_bias="1"-->
+<!--        android:id="@+id/stock2">-->
+<!--&lt;!&ndash;        <Button&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:text="+"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:id="@+id/btt0"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:layout_constraintLeft_toLeftOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:layout_constraintTop_toTopOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:layout_constraintBottom_toBottomOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;            app:layout_constraintRight_toLeftOf="@id/btt1"/>&ndash;&gt;-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="면"-->
+<!--            android:id="@+id/st_00"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"/>-->
+
 <!--        <Button-->
 <!--            android:layout_width="wrap_content"-->
 <!--            android:layout_height="wrap_content"-->
 <!--            android:text="+"-->
-<!--            android:id="@+id/btt0"-->
-<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+<!--            android:id="@+id/btt1"-->
 <!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintRight_toLeftOf="@id/btt1"/>-->
-        <Button
-            app:layout_constraintHorizontal_bias="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="-"
-            android:id="@+id/btt1"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-<!--            app:layout_constraintLeft_toRightOf="@id/btt0"/>-->
-    </androidx.constraintlayout.widget.ConstraintLayout>
+<!--            app:layout_constraintRight_toLeftOf="@id/btt2"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"/>-->
+<!--        <Button-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="-"-->
+<!--            android:id="@+id/btt2"-->
+<!--            app:layout_constraintRight_toLeftOf="@id/btt3"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"/>-->
+<!--        <Button-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Confirm"-->
+<!--            android:id="@+id/btt3"-->
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"/>-->
+<!--&lt;!&ndash;            app:layout_constraintLeft_toRightOf="@id/btt0"/>&ndash;&gt;-->
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

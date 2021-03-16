@@ -1,6 +1,7 @@
 package com.example.inventory_management;
 
 import android.graphics.Color;
+import android.graphics.Path;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -11,14 +12,28 @@ import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.TabHost;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.nio.Buffer;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     TabItem t1;
+    final static String PATH= Environment.getExternalStorageDirectory().getAbsolutePath()+"/Test/",FNAME="test.txt";
+    static String[][]arr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +71,37 @@ public class MainActivity extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
+
+        // 2-1. text Write test
+        Log.d("PATH - ",PATH);
+        try{
+            File dir=new File(PATH);
+            if(!dir.exists())dir.mkdir();
+            FileOutputStream fs=new FileOutputStream(PATH+FNAME,true);
+            BufferedWriter w=new BufferedWriter(new OutputStreamWriter(fs));
+            w.write("test file write");
+            w.flush();
+            w.close();
+            fs.close();
+            Log.d("Write - ","write comp");
+        }catch (Exception e){
+            Log.d("Write - ","write fail");
+            e.printStackTrace();
+        }
+        Log.d("Text - ","write comp");
+
+//        StringBuffer f=new StringBuffer();
+//        try{
+//            InputStream is=new FileInputStream(PATH);
+//            BufferedReader r=new BufferedReader(new InputStreamReader(is));
+//            String l="";
+//            while((l=r.readLine())!=null)f.append(l+"\n");
+//            r.close();
+//            is.close();
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        Log.d("Read Text - ",f.toString());
 
     }
 

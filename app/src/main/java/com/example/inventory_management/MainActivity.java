@@ -22,19 +22,24 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.nio.Buffer;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
     TabItem t1;
-    final static String PATH= Environment.getExternalStorageDirectory().getAbsolutePath()+"/Test/",FNAME="test.txt";
-    static String[][]arr;
+    final static String PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Test/", FNAME = "test.txt";
+    static String[][] arr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,13 +55,32 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
 //      Create / Set
-        ViewPager vp=findViewById(R.id.view_pager);
-        VPAdapter ad=new VPAdapter(getSupportFragmentManager(),0);
+        ViewPager vp = findViewById(R.id.view_pager);
+        VPAdapter ad = new VPAdapter(getSupportFragmentManager(), 0);
         vp.setAdapter(ad);
 
 //        Peristalsis
-        TabLayout tab=findViewById(R.id.tab);
+        TabLayout tab = findViewById(R.id.tab);
         tab.setupWithViewPager(vp);
+
+        Log.d("contextPath:", getApplicationContext().toString());
+        Log.d("Write test ...", "go");
+        if (textWrite()) {
+            Log.d("Read test ...", "go");
+            FileInputStream fis = null;
+            try {
+                fis = openFileInput("test.txt");
+                byte[] file = new byte[fis.available()];
+                fis.read(file);
+                fis.close();
+                String str = new String(file,"EUC-KR");
+                Log.d("Read test ...", "comp");
+                Log.d("Read Result ...", str);
+            } catch (Exception e) {
+                Log.d("Read test ...", "fail");
+                e.printStackTrace();
+            }
+        }
 
 //        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
 //        ViewPager viewPager = findViewById(R.id.view_pager);
@@ -92,25 +116,85 @@ public class MainActivity extends AppCompatActivity {
 //        Log.d("Text - ","write comp");
 //        2-1. fail
 
-        // 2-2. text Write test | https://github.com/nn98/Diary_Final/blob/master/app/src/main/java/com/example/jkllh/diary_final/MainActivity.java
-        Log.d("contextPath:",getApplicationContext().toString());
-        Log.d("Write test ...","go");
-        if(textWrite()){
-            Log.d("Read test ...","go");
-            FileInputStream fis=null;
-            try{
-                fis=openFileInput("test.txt");
-                byte[]file=new byte[fis.available()];
-                fis.read();
-                fis.close();
-                String str=new String(file);
-                Log.d("Read test ...","comp");
-                Log.d("Read Result ...",str);
-            }catch (Exception e){
-                Log.d("Read test ...","fail");
-                e.printStackTrace();
-            }
-        }
+        /* 성공 */
+////        // 2-2. text Write test | https://github.com/nn98/Diary_Final/blob/master/app/src/main/java/com/example/jkllh/diary_final/MainActivity.java
+//        Log.d("contextPath:", getApplicationContext().toString());
+//        Log.d("Write test ...", "go");
+//        if (textWrite()) {
+//            Log.d("Read test ...", "go");
+//            FileInputStream fis = null;
+//            try {
+//                fis = openFileInput("test.txt");
+//                byte[] file = new byte[fis.available()];
+//                fis.read(file);
+//                fis.close();
+//                String str = new String(file,"EUC-KR");
+//                Log.d("Read test ...", "comp");
+//                Log.d("Read Result ...", str);
+//            } catch (Exception e) {
+//                Log.d("Read test ...", "fail");
+//                e.printStackTrace();
+//            }
+//        }
+//        /*
+//        D/Write test ...: go
+//        D/Write test ...: comp
+//        D/Read test ...: go
+//        D/Read test ...: comp
+//        D/Read Result ...: ������������������
+//        글씨 깨짐? 오류는 없음
+//         */
+
+//        // 2-3. `` | https://yeolco.tistory.com/32
+//        /////////////////////// 파일 쓰기 ///////////////////////
+//        String str = "Test";
+//// 파일 생성
+//        File saveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/camdata"); // 저장 경로
+//// 폴더 생성
+//        if(!saveFile.exists()){ // 폴더 없을 경우
+//            saveFile.mkdir(); // 폴더 생성
+//        }
+//        Log.d("FileDir",saveFile.toString());
+//        try {
+//            long now = System.currentTimeMillis(); // 현재시간 받아오기
+//            Date date = new Date(now); // Date 객체 생성
+//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//            String nowTime = sdf.format(date);
+//
+//            BufferedWriter buf = new BufferedWriter(new FileWriter(saveFile+"/CarnumData.txt", true));
+//            buf.append(nowTime + " "); // 날짜 쓰기
+//            buf.append(str); // 파일 쓰기
+//            buf.newLine(); // 개행
+//            buf.close();
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        /////////////////////// 파일 읽기 ///////////////////////
+//// 파일 생성
+//        String line = null; // 한줄씩 읽기
+////        File saveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/camdata"); // 저장 경로
+//        saveFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/camdata"); // 저장 경로
+//// 폴더 생성
+//        if(!saveFile.exists()){ // 폴더 없을 경우
+//            saveFile.mkdir(); // 폴더 생성
+//        }
+//        try {
+//            BufferedReader buf = new BufferedReader(new FileReader(saveFile+"/CarnumData.txt"));
+//            while((line=buf.readLine())!=null){
+////                tv.append(line);
+////                tv.append("\n");
+//                Log.d("re",line+"\n");
+//            }
+//            buf.close();
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+////        ㅋㅋㅋㅋㅋ ㅅㅂ
 
 //        StringBuffer f=new StringBuffer();
 //        try{
@@ -127,18 +211,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private boolean textWrite(){
+    @SuppressLint("WrongConstant")
+    private boolean textWrite() {
 
-        FileOutputStream fos=null;
-        try{
-            fos=openFileOutput("test.txt",MODE_NO_LOCALIZED_COLLATORS);
-            String text="201732009";
+        FileOutputStream fos = null;
+        try {
+            fos = openFileOutput("test.txt", MODE_NO_LOCALIZED_COLLATORS);
+            String text = "201732009";
             fos.write(text.getBytes());
             fos.close();
-            Log.d("Write test ...","comp");
+            Log.d("Write test ...", "comp");
             return true;
-        }catch (Exception e){
-            Log.d("Write test ...","fail");
+        } catch (Exception e) {
+            Log.d("Write test ...", "fail");
             e.printStackTrace();
             return false;
         }

@@ -1,5 +1,6 @@
 package com.example.inventory_management;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.Path;
 import android.os.Bundle;
@@ -73,22 +74,43 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         // 2-1. text Write test
-        Log.d("PATH - ",PATH);
-        try{
-            File dir=new File(PATH);
-            if(!dir.exists())dir.mkdir();
-            FileOutputStream fs=new FileOutputStream(PATH+FNAME,true);
-            BufferedWriter w=new BufferedWriter(new OutputStreamWriter(fs));
-            w.write("test file write");
-            w.flush();
-            w.close();
-            fs.close();
-            Log.d("Write - ","write comp");
-        }catch (Exception e){
-            Log.d("Write - ","write fail");
-            e.printStackTrace();
+//        Log.d("PATH - ",PATH);
+//        try{
+//            File dir=new File(PATH);
+//            if(!dir.exists())dir.mkdir();
+//            FileOutputStream fs=new FileOutputStream(PATH+FNAME,true);
+//            BufferedWriter w=new BufferedWriter(new OutputStreamWriter(fs));
+//            w.write("test file write");
+//            w.flush();
+//            w.close();
+//            fs.close();
+//            Log.d("Write - ","write comp");
+//        }catch (Exception e){
+//            Log.d("Write - ","write fail");
+//            e.printStackTrace();
+//        }
+//        Log.d("Text - ","write comp");
+//        2-1. fail
+
+        // 2-2. text Write test | https://github.com/nn98/Diary_Final/blob/master/app/src/main/java/com/example/jkllh/diary_final/MainActivity.java
+        Log.d("contextPath:",getApplicationContext().toString());
+        Log.d("Write test ...","go");
+        if(textWrite()){
+            Log.d("Read test ...","go");
+            FileInputStream fis=null;
+            try{
+                fis=openFileInput("test.txt");
+                byte[]file=new byte[fis.available()];
+                fis.read();
+                fis.close();
+                String str=new String(file);
+                Log.d("Read test ...","comp");
+                Log.d("Read Result ...",str);
+            }catch (Exception e){
+                Log.d("Read test ...","fail");
+                e.printStackTrace();
+            }
         }
-        Log.d("Text - ","write comp");
 
 //        StringBuffer f=new StringBuffer();
 //        try{
@@ -102,6 +124,24 @@ public class MainActivity extends AppCompatActivity {
 //            e.printStackTrace();
 //        }
 //        Log.d("Read Text - ",f.toString());
+
+    }
+
+    private boolean textWrite(){
+
+        FileOutputStream fos=null;
+        try{
+            fos=openFileOutput("test.txt",MODE_NO_LOCALIZED_COLLATORS);
+            String text="201732009";
+            fos.write(text.getBytes());
+            fos.close();
+            Log.d("Write test ...","comp");
+            return true;
+        }catch (Exception e){
+            Log.d("Write test ...","fail");
+            e.printStackTrace();
+            return false;
+        }
 
     }
 

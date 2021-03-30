@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Environment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TabHost;
@@ -49,6 +50,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d("PATH",PATH);
+        Log.d("Gravity-lef", ""+Gravity.LEFT);
+        Log.d("Gravity-cen", ""+Gravity.CENTER);
+        Log.d("Gravity-rig", ""+Gravity.RIGHT);
+//        Log.d("getPackageName",getPackageName());
+//        Log.d("getPackageCodePath",getPackageCodePath());
+//        Log.d("PackageResourcePath",getPackageResourcePath());
+
         textRead();
 
         add=findViewById(R.id.add);
@@ -245,13 +253,13 @@ public class MainActivity extends AppCompatActivity {
         FileInputStream fis = null;
         try {
 //                fis = openFileInput("test.txt");
-            File f=new File("stock.txt");
+            File f=new File("/data/data/"+getPackageName()+"/files/stock.txt");
             if(!f.exists()){
                 Log.d("File","File not exist");
                 @SuppressLint("WrongConstant") FileOutputStream fos =
                         openFileOutput("stock.txt", MODE_NO_LOCALIZED_COLLATORS);
                 f.mkdir();
-            }
+            }else Log.d("File","File exist");
             fis = openFileInput("stock.txt");
             byte[] file = new byte[fis.available()];
             fis.read(file);

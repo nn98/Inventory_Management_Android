@@ -1,12 +1,15 @@
 package com.example.inventory_management;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,7 +22,13 @@ public class ReVAdapter1 extends RecyclerView.Adapter<ReVAdapter1.ViewHolder> {
         public ViewHolder(View view){
             super(view);
             name=view.findViewById(R.id.name);
+            name.setHint("재료명");
+            name.setHintTextColor(Color.parseColor("#888888"));
+            name.setGravity(Gravity.CENTER);
             count=view.findViewById(R.id.count);
+            count.setHint("개수");
+            count.setHintTextColor(Color.parseColor("#888888"));
+            count.setGravity(Gravity.CENTER);
             plus=view.findViewById(R.id.plus);
             minus=view.findViewById(R.id.minus);
             confirm=view.findViewById(R.id.confirm);
@@ -74,8 +83,12 @@ public class ReVAdapter1 extends RecyclerView.Adapter<ReVAdapter1.ViewHolder> {
             public void onClick(View v) {
                 Log.d("List_",list.toString());
                 StringBuffer f=new StringBuffer();
-                f.append(vH.name.getText()+"$");
-                f.append(vH.count.getText());
+                String name=vH.name.getText().toString().trim(),
+                        count=vH.count.getText().toString().trim();
+                f.append(name+"$");
+                vH.name.setText(name);
+                f.append(count);
+                vH.count.setText(count);
                 list.set(vH.getAdapterPosition(),f.toString());
                 Log.d("List_",list.toString());
                 MainActivity.close.performClick();

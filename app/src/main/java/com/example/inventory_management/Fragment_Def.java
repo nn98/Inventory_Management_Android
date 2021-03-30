@@ -147,7 +147,7 @@ public class Fragment_Def extends Fragment {
     }
 
     protected static void addItem(){
-        list.add("재료명$0");
+        list.add("$");
         rVA1.notifyDataSetChanged();
     }
 }

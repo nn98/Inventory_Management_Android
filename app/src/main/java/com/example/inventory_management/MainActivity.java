@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TabHost;
 
 import java.io.BufferedReader;
@@ -38,34 +39,33 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
 
     TabItem t1;
+    static Button add,close;
     static String str;
-    final static String PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Test/", FNAME = "test.txt";
+    final static String PATH = Environment.getExternalStorageDirectory().getAbsolutePath();
     static String[][] arr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.d("PATH",PATH);
+        textRead();
 
-        Log.d("contextPath:", getApplicationContext().toString());
-        Log.d("Write test ...", "go");
-        if (textWrite()) {
-            Log.d("Read test ...", "go");
-            FileInputStream fis = null;
-            try {
-//                fis = openFileInput("test.txt");
-                fis = openFileInput("stock.txt");
-                byte[] file = new byte[fis.available()];
-                fis.read(file);
-                fis.close();
-                str = new String(file,"utf-8");
-                Log.d("Read Result ...", str);
-                Log.d("Read test ...", "comp");
-            } catch (Exception e) {
-                Log.d("Read test ...", "fail");
-                e.printStackTrace();
+        add=findViewById(R.id.add);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment_Def.addItem();
             }
-        }
+        });
+
+        close=findViewById(R.id.close);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textWrite();
+            }
+        });
 
 //        t1=findViewById(R.id.t_Default);
 //        t1.setOnClickListener(new View.OnClickListener() {
@@ -235,16 +235,50 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @SuppressLint("WrongConstant")
-    private boolean textWrite() {
+//    static void saveText(){
+//        textWrite();
+//    }
 
+    void textRead(){
+        Log.d("contextPath:", getApplicationContext().toString());
+        Log.d("Read test ...", "go");
+        FileInputStream fis = null;
+        try {
+//                fis = openFileInput("test.txt");
+            File f=new File("stock.txt");
+            if(!f.exists()){
+                Log.d("File","File not exist");
+                @SuppressLint("WrongConstant") FileOutputStream fos =
+                        openFileOutput("stock.txt", MODE_NO_LOCALIZED_COLLATORS);
+                f.mkdir();
+            }
+            fis = openFileInput("stock.txt");
+            byte[] file = new byte[fis.available()];
+            fis.read(file);
+            fis.close();
+            str = new String(file,"utf-8");
+            Log.d("Read Result ...", str);
+            Log.d("Read test ...", "comp");
+        } catch (Exception e) {
+            Log.d("Read test ...", "fail");
+            e.printStackTrace();
+        }
+    }
+
+    @SuppressLint("WrongConstant")
+    boolean textWrite() {
+        Log.d("Write test ...", "go");
         FileOutputStream fos = null;
         try {
 //            fos = openFileOutput("test.txt", MODE_NO_LOCALIZED_COLLATORS);
 //            String text = "201732009";
             fos = openFileOutput("stock.txt", MODE_NO_LOCALIZED_COLLATORS);
-            String text = "면$29\n면추$5";
-            fos.write(text.getBytes());
+            StringBuffer f=new StringBuffer();
+            for(String s:ReVAdapter1.list){
+                f.append(s+"\n");
+            }
+            Log.d("Write text --",f.toString());
+            fos.write(f.toString().getBytes());
             fos.close();
             Log.d("Write test ...", "comp");
             return true;

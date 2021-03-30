@@ -73,9 +73,8 @@ public class Fragment_Def extends Fragment {
 //    Button btn0_0,btn0_1,btn0_2;
 //    int n0=0,n1=0,n2=0,n3=0;
 
-    ReVAdapter1 rVA1;
-    ArrayList<String>list;
-    Button btn0;
+    static ReVAdapter1 rVA1;
+    static ArrayList<String>list;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -96,15 +95,6 @@ public class Fragment_Def extends Fragment {
         rV.setLayoutManager(new LinearLayoutManager(getActivity()));
         rV.setItemAnimator(new DefaultItemAnimator());
         rV.setAdapter(rVA1);
-
-        btn0=v.findViewById(R.id.add);
-        btn0.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                list.add("재료명$0");
-                rVA1.notifyDataSetChanged();
-            }
-        });
 
 //        tv0_0=v.findViewById(R.id.noodleC);
 //        eT0=v.findViewById(R.id.noodleN);
@@ -154,5 +144,10 @@ public class Fragment_Def extends Fragment {
 //            }
 //        });
         return v;
+    }
+
+    protected static void addItem(){
+        list.add("재료명$0");
+        rVA1.notifyDataSetChanged();
     }
 }

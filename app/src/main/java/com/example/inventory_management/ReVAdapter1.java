@@ -27,7 +27,7 @@ public class ReVAdapter1 extends RecyclerView.Adapter<ReVAdapter1.ViewHolder> {
     }
 
     LayoutInflater lI;
-    ArrayList<String> list;
+    static ArrayList<String> list;
     static String result;
 
     public ReVAdapter1(Context con, ArrayList<String>list){
@@ -57,7 +57,7 @@ public class ReVAdapter1 extends RecyclerView.Adapter<ReVAdapter1.ViewHolder> {
             @Override
             public void onClick(View v) {
                 int c=Integer.parseInt(vH.count.getText().toString())+1;
-                vH.count.setText(c);
+                vH.count.setText(""+c);
                 vH.confirm.performClick();
             }
         });
@@ -65,10 +65,21 @@ public class ReVAdapter1 extends RecyclerView.Adapter<ReVAdapter1.ViewHolder> {
             @Override
             public void onClick(View v) {
                 int c=Integer.parseInt(vH.count.getText().toString())-1;
-                vH.count.setText(c);
+                vH.count.setText(""+c);
                 vH.confirm.performClick();
             }
         });
-
+        vH.confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("List_",list.toString());
+                StringBuffer f=new StringBuffer();
+                f.append(vH.name.getText()+"$");
+                f.append(vH.count.getText());
+                list.set(vH.getAdapterPosition(),f.toString());
+                Log.d("List_",list.toString());
+                MainActivity.close.performClick();
+            }
+        });
     }
 }

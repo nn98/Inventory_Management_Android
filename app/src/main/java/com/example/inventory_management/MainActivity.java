@@ -63,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tab = findViewById(R.id.tab);
         tab.setupWithViewPager(vp);
 
+//        구관이 명관
+//        지가하고 지가 뭐한지 모르는 모습
+//        애뮬 파일 확인 https://developer.android.com/studio/debug/device-file-explorer?hl=ko
         Log.d("contextPath:", getApplicationContext().toString());
         Log.d("Write test ...", "go");
         if (textWrite()) {

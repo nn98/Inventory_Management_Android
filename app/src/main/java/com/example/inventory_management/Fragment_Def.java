@@ -4,6 +4,10 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +16,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 /**
@@ -60,64 +66,89 @@ public class Fragment_Def extends Fragment {
         }
     }
 
-    TextView tv0_0;
-    EditText eT0;
-    Button btn0_0,btn0_1,btn0_2;
-    int n0=0,n1=0,n2=0,n3=0;
+//    TextView tv0_0;
+//    EditText eT0;
+//    Button btn0_0,btn0_1,btn0_2;
+//    int n0=0,n1=0,n2=0,n3=0;
+
+    ReVAdapter1 rVA1;
+    ArrayList<String>list;
+    Button btn0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View v=inflater.inflate(R.layout.fragment__def, container, false);
-        tv0_0=v.findViewById(R.id.noodleC);
-        eT0=v.findViewById(R.id.noodleN);
-        btn0_0=v.findViewById(R.id.noodleP);
-        btn0_0.setOnClickListener(new View.OnClickListener() {
+//        View v=inflater.inflate(R.layout.fragment__def, container, false);
+        ViewGroup v=(ViewGroup)inflater.inflate(R.layout.fragment__def,container,false);
+        list=new ArrayList<>();
+        list.add("면$29");
+        list.add("면추$5");
+
+        rVA1=new ReVAdapter1(getActivity(),list);
+        RecyclerView rV=v.findViewById(R.id.list);
+        rV.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
+        rV.setLayoutManager(new LinearLayoutManager(getActivity()));
+        rV.setItemAnimator(new DefaultItemAnimator());
+        rV.setAdapter(rVA1);
+
+        btn0=v.findViewById(R.id.add);
+        btn0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String x=eT0.getText().toString();
-                if(!x.equals(""))
-                    n1=Integer.parseInt(x);
-                else
-                    n1=0;
-                n1++;
-                eT0.setText(""+n1);
-                tv0_0.setText(""+n1);
+                list.add("재료명$0");
+                rVA1.notifyDataSetChanged();
             }
         });
-        btn0_1=v.findViewById(R.id.noodleM);
-        btn0_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String x=eT0.getText().toString();
-                if(!x.equals(""))
-                    n1=Integer.parseInt(x);
-                else
-                    n1=0;
-                n1--;
-                eT0.setText(""+n1);
-                tv0_0.setText(""+n1);
-            }
-        });
-        btn0_2=v.findViewById(R.id.noodleCon);
-        btn0_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String x=eT0.getText().toString();
-                if(!x.equals(""))
-                    n1=Integer.parseInt(x);
-                else
-                    n1=0;
-                eT0.setText(""+n1);
-                tv0_0.setText(""+n1);
-//                AlertDialog.Builder b=new AlertDialog.Builder(getActivity());
-//                b.setTitle("변경");
-//                b.show();
-                Toast.makeText(getActivity(),"변경 완료",Toast.LENGTH_SHORT).show();
-            }
-        });
+
+//        tv0_0=v.findViewById(R.id.noodleC);
+//        eT0=v.findViewById(R.id.noodleN);
+//        btn0_0=v.findViewById(R.id.noodleP);
+//        btn0_0.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String x=eT0.getText().toString();
+//                if(!x.equals(""))
+//                    n1=Integer.parseInt(x);
+//                else
+//                    n1=0;
+//                n1++;
+//                eT0.setText(""+n1);
+//                tv0_0.setText(""+n1);
+//            }
+//        });
+//        btn0_1=v.findViewById(R.id.noodleM);
+//        btn0_1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String x=eT0.getText().toString();
+//                if(!x.equals(""))
+//                    n1=Integer.parseInt(x);
+//                else
+//                    n1=0;
+//                n1--;
+//                eT0.setText(""+n1);
+//                tv0_0.setText(""+n1);
+//            }
+//        });
+//        btn0_2=v.findViewById(R.id.noodleCon);
+//        btn0_2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String x=eT0.getText().toString();
+//                if(!x.equals(""))
+//                    n1=Integer.parseInt(x);
+//                else
+//                    n1=0;
+//                eT0.setText(""+n1);
+//                tv0_0.setText(""+n1);
+////                AlertDialog.Builder b=new AlertDialog.Builder(getActivity());
+////                b.setTitle("변경");
+////                b.show();
+//                Toast.makeText(getActivity(),"변경 완료",Toast.LENGTH_SHORT).show();
+//            }
+//        });
         return v;
     }
 }

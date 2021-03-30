@@ -28,6 +28,7 @@ public class ReVAdapter1 extends RecyclerView.Adapter<ReVAdapter1.ViewHolder> {
 
     LayoutInflater lI;
     ArrayList<String> list;
+    static String result;
 
     public ReVAdapter1(Context con, ArrayList<String>list){
         this.lI=LayoutInflater.from(con);
@@ -48,7 +49,26 @@ public class ReVAdapter1 extends RecyclerView.Adapter<ReVAdapter1.ViewHolder> {
         Log.d("text",list.get(index));
         String[]ingres=list.get(index).split("\\$");
         int i=0;
-        vH.name.setText(ingres[i++]);
-        vH.count.setText(ingres[i++]);
+        if(ingres.length>1) {
+            vH.name.setText(ingres[i++]);
+            vH.count.setText(ingres[i++]);
+        }
+        vH.plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int c=Integer.parseInt(vH.count.getText().toString())+1;
+                vH.count.setText(c);
+                vH.confirm.performClick();
+            }
+        });
+        vH.minus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int c=Integer.parseInt(vH.count.getText().toString())-1;
+                vH.count.setText(c);
+                vH.confirm.performClick();
+            }
+        });
+
     }
 }

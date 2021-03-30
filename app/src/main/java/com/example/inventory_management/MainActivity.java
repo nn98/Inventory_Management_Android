@@ -38,6 +38,7 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
 
     TabItem t1;
+    static String str;
     final static String PATH = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Test/", FNAME = "test.txt";
     static String[][] arr;
 
@@ -45,6 +46,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Log.d("contextPath:", getApplicationContext().toString());
+        Log.d("Write test ...", "go");
+        if (textWrite()) {
+            Log.d("Read test ...", "go");
+            FileInputStream fis = null;
+            try {
+//                fis = openFileInput("test.txt");
+                fis = openFileInput("stock.txt");
+                byte[] file = new byte[fis.available()];
+                fis.read(file);
+                fis.close();
+                str = new String(file,"utf-8");
+                Log.d("Read Result ...", str);
+                Log.d("Read test ...", "comp");
+            } catch (Exception e) {
+                Log.d("Read test ...", "fail");
+                e.printStackTrace();
+            }
+        }
 
 //        t1=findViewById(R.id.t_Default);
 //        t1.setOnClickListener(new View.OnClickListener() {
@@ -66,24 +87,24 @@ public class MainActivity extends AppCompatActivity {
 //        구관이 명관
 //        지가하고 지가 뭐한지 모르는 모습
 //        애뮬 파일 확인 https://developer.android.com/studio/debug/device-file-explorer?hl=ko
-        Log.d("contextPath:", getApplicationContext().toString());
-        Log.d("Write test ...", "go");
-        if (textWrite()) {
-            Log.d("Read test ...", "go");
-            FileInputStream fis = null;
-            try {
-                fis = openFileInput("test.txt");
-                byte[] file = new byte[fis.available()];
-                fis.read(file);
-                fis.close();
-                String str = new String(file,"EUC-KR");
-                Log.d("Read test ...", "comp");
-                Log.d("Read Result ...", str);
-            } catch (Exception e) {
-                Log.d("Read test ...", "fail");
-                e.printStackTrace();
-            }
-        }
+//        Log.d("contextPath:", getApplicationContext().toString());
+//        Log.d("Write test ...", "go");
+//        if (textWrite()) {
+//            Log.d("Read test ...", "go");
+//            FileInputStream fis = null;
+//            try {
+//                fis = openFileInput("test.txt");
+//                byte[] file = new byte[fis.available()];
+//                fis.read(file);
+//                fis.close();
+//                String str = new String(file,"EUC-KR");
+//                Log.d("Read test ...", "comp");
+//                Log.d("Read Result ...", str);
+//            } catch (Exception e) {
+//                Log.d("Read test ...", "fail");
+//                e.printStackTrace();
+//            }
+//        }
 
 //        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
 //        ViewPager viewPager = findViewById(R.id.view_pager);
@@ -219,8 +240,10 @@ public class MainActivity extends AppCompatActivity {
 
         FileOutputStream fos = null;
         try {
-            fos = openFileOutput("test.txt", MODE_NO_LOCALIZED_COLLATORS);
-            String text = "201732009";
+//            fos = openFileOutput("test.txt", MODE_NO_LOCALIZED_COLLATORS);
+//            String text = "201732009";
+            fos = openFileOutput("stock.txt", MODE_NO_LOCALIZED_COLLATORS);
+            String text = "면$29\n면추$5";
             fos.write(text.getBytes());
             fos.close();
             Log.d("Write test ...", "comp");

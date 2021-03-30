@@ -18,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -82,9 +84,11 @@ public class Fragment_Def extends Fragment {
 
 //        View v=inflater.inflate(R.layout.fragment__def, container, false);
         ViewGroup v=(ViewGroup)inflater.inflate(R.layout.fragment__def,container,false);
-        list=new ArrayList<>();
-        list.add("면$29");
-        list.add("면추$5");
+        List<String> l=Arrays.asList(MainActivity.str.split("\n"));
+        list=new ArrayList<String>();
+        list.addAll(l);
+//        list.add("면$29");
+//        list.add("면추$5");
 
         rVA1=new ReVAdapter1(getActivity(),list);
         RecyclerView rV=v.findViewById(R.id.list);

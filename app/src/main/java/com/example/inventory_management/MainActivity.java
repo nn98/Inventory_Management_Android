@@ -40,7 +40,7 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
 
     TabItem t1;
-    static Button add,close;
+    static Button add,close,delete;
     static String str;
     final static String PATH = Environment.getExternalStorageDirectory().getAbsolutePath();
     static String[][] arr;
@@ -72,6 +72,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 textWrite();
+            }
+        });
+
+        delete=findViewById(R.id.delete);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 

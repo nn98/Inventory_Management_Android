@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
@@ -19,6 +20,7 @@ public class ReVAdapter1 extends RecyclerView.Adapter<ReVAdapter1.ViewHolder> {
     static class ViewHolder extends RecyclerView.ViewHolder{
         EditText name,count;
         Button plus,minus,confirm;
+        CheckBox check;
         public ViewHolder(View view){
             super(view);
             name=view.findViewById(R.id.name);
@@ -32,6 +34,7 @@ public class ReVAdapter1 extends RecyclerView.Adapter<ReVAdapter1.ViewHolder> {
             plus=view.findViewById(R.id.plus);
             minus=view.findViewById(R.id.minus);
             confirm=view.findViewById(R.id.confirm);
+            check=view.findViewById(R.id.check);
         }
     }
 
@@ -92,6 +95,14 @@ public class ReVAdapter1 extends RecyclerView.Adapter<ReVAdapter1.ViewHolder> {
                 list.set(vH.getAdapterPosition(),f.toString());
                 Log.d("List_",list.toString());
                 MainActivity.close.performClick();
+            }
+        });
+        vH.check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("delete","checked");
+                list.remove(index);
+                notifyDataSetChanged();
             }
         });
     }

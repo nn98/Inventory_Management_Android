@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -148,6 +149,7 @@ public class Fragment_Def extends Fragment {
 
     protected static void addItem(){
         list.add("$");
+        Log.d("AddItem",list.toString());
         rVA1.notifyDataSetChanged();
     }
 }

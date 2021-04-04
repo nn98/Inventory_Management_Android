@@ -21,6 +21,14 @@
         app:layout_constraintTop_toBottomOf="@id/add"
         app:layout_constraintRight_toRightOf="parent"/>
 
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="D"
+        android:id="@+id/delete"
+        app:layout_constraintTop_toBottomOf="@id/close"
+        app:layout_constraintRight_toRightOf="parent"/>
+
     <com.google.android.material.tabs.TabLayout
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

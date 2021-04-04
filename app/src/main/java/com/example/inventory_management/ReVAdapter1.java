@@ -68,7 +68,7 @@ public class ReVAdapter1 extends RecyclerView.Adapter<ReVAdapter1.ViewHolder> {
         vH.plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int c=Integer.parseInt(vH.count.getText().toString())+1;
+                int c=vH.count.getText().toString().equals("")?0:Integer.parseInt(vH.count.getText().toString())+1;
                 vH.count.setText(""+c);
                 vH.confirm.performClick();
             }
@@ -76,7 +76,7 @@ public class ReVAdapter1 extends RecyclerView.Adapter<ReVAdapter1.ViewHolder> {
         vH.minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int c=Integer.parseInt(vH.count.getText().toString())-1;
+                int c=vH.count.getText().toString().equals("")?0:Integer.parseInt(vH.count.getText().toString())-1;
                 vH.count.setText(""+c);
                 vH.confirm.performClick();
             }

@@ -76,6 +76,7 @@ public class Fragment_Def extends Fragment {
 
     static ReVAdapter1 rVA1;
     static ArrayList<String>list;
+    static RecyclerView rV;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -91,7 +92,7 @@ public class Fragment_Def extends Fragment {
 //        list.add("면추$5");
 
         rVA1=new ReVAdapter1(getActivity(),list);
-        RecyclerView rV=v.findViewById(R.id.list);
+        rV=v.findViewById(R.id.list);
         rV.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
         rV.setLayoutManager(new LinearLayoutManager(getActivity()));
         rV.setItemAnimator(new DefaultItemAnimator());
@@ -151,5 +152,6 @@ public class Fragment_Def extends Fragment {
         list.add("$");
         Log.d("AddItem",list.toString());
         rVA1.notifyDataSetChanged();
+        rV.setAdapter(rVA1);
     }
 }

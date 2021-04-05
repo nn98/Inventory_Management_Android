@@ -101,7 +101,10 @@ public class ReVAdapter1 extends RecyclerView.Adapter<ReVAdapter1.ViewHolder> {
             @Override
             public void onClick(View v) {
                 Log.d("delete","checked");
+                vH.check.setChecked(false);
+                Log.d("list before",list.toString());
                 list.remove(index);
+                Log.d("list after",list.toString());
                 notifyDataSetChanged();
             }
         });
